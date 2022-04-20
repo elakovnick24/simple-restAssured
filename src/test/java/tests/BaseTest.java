@@ -25,7 +25,7 @@ public class BaseTest {
         pass = prop.getProperty("pass");
 
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        RestAssured.baseURI = prop.getProperty("base.url");
+        //RestAssured.baseURI = prop.getProperty("base.url");
         RestAssured.filters(new AllureRestAssured());
 
 //        reqSpec = new RequestSpecBuilder()

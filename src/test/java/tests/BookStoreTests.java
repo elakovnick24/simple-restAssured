@@ -1,10 +1,13 @@
 package tests;
 
 import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.RestAssured;
 import models.Credentionals;
 import models.GenerateTokenResponse;
 import models.lombok.CredentionalsLombok;
 import models.lombok.GenerateTokenResponseLombok;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.get;
@@ -19,7 +22,10 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 public class BookStoreTests extends BaseTest {
 
-
+    @BeforeEach
+    static void beforeEach() {
+        RestAssured.baseURI = "https://demoqa.com";
+    }
     @Test
     void getBooksTest() {
         get(" /BookStore/v1/Books")
