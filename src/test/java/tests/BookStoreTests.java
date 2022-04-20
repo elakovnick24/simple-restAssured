@@ -23,7 +23,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 public class BookStoreTests extends BaseTest {
 
     @BeforeEach
-    static void beforeEach() {
+    void beforeEach() {
         RestAssured.baseURI = "https://demoqa.com";
     }
     @Test
