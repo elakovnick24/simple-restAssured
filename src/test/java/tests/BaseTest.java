@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class BaseTest {
-    static Properties prop = new Properties();
+/*    static Properties prop = new Properties();
     static String username;
     static String pass;
     //  static ResponseSpecification responseSpecification = null;
@@ -52,6 +52,6 @@ public class BaseTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }
 

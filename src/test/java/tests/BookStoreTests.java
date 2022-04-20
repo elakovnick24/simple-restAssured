@@ -148,8 +148,8 @@ public class BookStoreTests extends BaseTest {
     @Test
     void generateTokenJsonSchemeCheckTest() {
         Credentionals credentionals = new Credentionals();
-        credentionals.setUserName(username);
-        credentionals.setPassword(pass);
+        credentionals.setUserName("Testerovshik_QA");
+        credentionals.setPassword("Qwerty_12345!");
 
         given()
                 .filter(withCustomTemplates())
