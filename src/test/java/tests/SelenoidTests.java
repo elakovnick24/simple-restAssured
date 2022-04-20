@@ -1,3 +1,5 @@
+package tests;
+
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.get;
@@ -8,7 +10,6 @@ import static org.hamcrest.core.Is.is;
 public class SelenoidTests {
     // make request to https://selenoid.autotests.cloud/status
     // total is 20
-
     @Test
     void checkTotal() {
         given()

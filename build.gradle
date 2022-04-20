@@ -1,15 +1,24 @@
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.9.6'
+    id "io.freefair.lombok" version "6.4.2"
 }
 
 repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.17.2",
+dependencies {
+    implementation(
+            'org.projectlombok:lombok:1.18.16'
+    )
+}
+
+def allureVersion = "2.17.3",
     selenideVersion = "6.2.1",
-    junitVersion = "5.8.2"
+    junitVersion = "5.8.2",
+    restAssuredVersion = "5.0.1",
+    lombokVersion = "1.18 .24"
 
 allure {
     report {
@@ -26,26 +35,42 @@ allure {
     }
 }
 
+
 dependencies {
+
+    compileOnly 'org.projectlombok:lombok:$lombokVersion'
+    annotationProcessor 'org.projectlombok:lombok:$lombokVersion'
+    testCompileOnly 'org.projectlombok:lombok:$lombokVersion'
+    testAnnotationProcessor 'org.projectlombok:lombok:$lombokVersion'
+
+    implementation(
+            'com.fasterxml.jackson.core:jackson-core:2.13.2',
+            'com.fasterxml.jackson.core:jackson-annotations:2.13.2',
+            'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+
+    )
+
     testImplementation(
-            "org.aspectj:aspectjweaver:1.9.6",
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.rest-assured:rest-assured:4.3.1",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
-            "org.aeonbits.owner:owner:1.0.12",
-            "org.assertj:assertj-core:3.22.0",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             "org.junit.jupiter:junit-jupiter-params:$junitVersion",
-            "com.github.javafaker:javafaker:1.0.2",
+            "org.assertj:assertj-core:3.22.0",
             "org.aeonbits.owner:owner:1.0.12",
+            "org.aspectj:aspectjweaver:1.9.6",
+            "com.github.javafaker:javafaker:1.0.2",
             "org.slf4j:slf4j-simple:1.7.36",
-            "io.rest-assured:rest-assured:5.0.1")
+            "commons-io:commons-io:2.6",
+    )
 
     testRuntimeOnly(
             "org.slf4j:slf4j-simple:1.7.29",
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
