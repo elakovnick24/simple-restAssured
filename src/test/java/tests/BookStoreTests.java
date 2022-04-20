@@ -164,16 +164,15 @@ public class BookStoreTests extends BaseTest {
 
     @Test
     void generateTokenWithModelTest() {
-  /*    Credentionals credentionals = new Credentionals();
-        credentionals.setUserName(username);
-        credentionals.setPassword(pass);*/
-        String data = "{ \"userName\": \"Testerovshik_QA\", " +
-                "\"password\": \"Qwerty_12345!\" }";
+        Credentionals credentionals = new Credentionals();
+        credentionals.setUserName("Testerovshik_QA");
+        credentionals.setPassword("Qwerty_12345!");
+
 
         GenerateTokenResponse tokenResponse =
                 given()
                         .filter(withCustomTemplates())
-                        .body(data)
+                        .body(credentionals)
                         .contentType(JSON)
                         .log().uri()
                         .log().body()
@@ -195,8 +194,8 @@ public class BookStoreTests extends BaseTest {
     @Test
     void generateTokenWithLombokTest() {
         CredentionalsLombok credentionals = new CredentionalsLombok();
-        credentionals.setUserName(username);
-        credentionals.setPassword(pass);
+        credentionals.setUserName("Testerovshik_QA");
+        credentionals.setPassword("Qwerty_12345!");
 
         GenerateTokenResponseLombok tokenResponse =
                 given()
